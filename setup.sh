@@ -5,6 +5,6 @@ if [ -d "$envD" ]; then
 fi
 
 python3 -m venv $envD --system-site-packages
-source $envD/bin/activate
+. $envD/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install -I -r requirements.txt
