@@ -3,11 +3,11 @@ from Kingofsat import Kingofsat
 from pprint import pprint
 
 providers = {
-    "Polsat": ['1803', '1813', '1861'],
+    "Polsat.*": ['1803', '1813', '1861'],
     "NC\+": ['0B01', '1884', '0100'],
     "Platforma Canal\+": ['0100'],
     "Telewizja na kartę": ['0B00'],
-    'Nova': ['0500'],
+    'Orange.*': ['0500'],
     'ORF': ['0648', '0650', '0D95', '0D98'],
     'Sky': ['098D'],
     'HD \+': ['1830', '1843', '1860', '186A']
