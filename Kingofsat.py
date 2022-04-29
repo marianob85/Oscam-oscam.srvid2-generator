@@ -17,6 +17,8 @@ def extract_audio_pids(line):
 def extract_encryption(line):
     return line.split('|')
 
+def extract_platform(line):
+    return line.split('|')
 
 class Service():
     def __init__(self, channel):
@@ -26,7 +28,7 @@ class Service():
         self.Name = channel[2]
         self.Type = channel[4]
         self.Encryption = extract_encryption( channel[6] )
-        self.Platform = channel[5]
+        self.Platform = extract_platform( channel[5] )
         self.ServiceID = int(channel[7])
         self.VPID = int(channel[8])
         self.APIDS = extract_audio_pids(channel[9])

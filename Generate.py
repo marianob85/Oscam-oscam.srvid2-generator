@@ -31,9 +31,11 @@ if __name__ == '__main__':
             for data in orbitaldata:
                 if 'FTA' in data.Encryption:
                     continue
-                provider, caids = findCaid(data.Platform)
-                if caids:
-                    caidsStr = ','.join(caids)
-                    srvFile.write("{sid:04X}:{caids}|{channelName}|||{provider}\n".format(sid=data.ServiceID, caids=caidsStr, channelName=data.Name, provider=provider).encode("utf-8"))
-                else:
-                    print(f"Provider not found: {data.Platform}")
+                if data.Platform is not None:
+                    for platform in data.Platform:
+                        provider, caids = findCaid(platform)
+                        if caids:
+                            caidsStr = ','.join(caids)
+                            srvFile.write("{sid:04X}:{caids}|{channelName}|||{provider}\n".format(sid=data.ServiceID, caids=caidsStr, channelName=data.Name, provider=provider).encode("utf-8"))
+                        else:
+                            print(f"Provider not found: {platform}")
