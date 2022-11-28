@@ -3,14 +3,14 @@ from Kingofsat import Kingofsat
 from pprint import pprint
 
 providers = {
-    "Polsat.*": ['1803', '1813', '1861'],
-    "NC\+": ['0B01', '1884', '0100'],
-    "Platforma Canal\+": ['0100'],
+    "Polsat": ['1803', '1813', '1861'],
+    "NC+": ['0B01', '1884', '0100'],
+    "Platforma Canal+": ['0100'],
     "Telewizja na kartę": ['0B00'],
-    'Orange.*': ['0500'],
+    'Orange': ['0500'],
     'ORF': ['0648', '0650', '0D95', '0D98'],
     'Sky': ['098D'],
-    'HD \+': ['1830', '1843', '1860', '186A']
+    'HD+': ['1830', '1843', '1860', '186A']
 }
 
 
@@ -31,9 +31,12 @@ if __name__ == '__main__':
             for data in orbitaldata:
                 if 'FTA' in data.Encryption:
                     continue
-                provider, caids = findCaid(data.Platform)
-                if caids:
+                for provider, caids in providers.items():
                     caidsStr = ','.join(caids)
                     srvFile.write("{sid:04X}:{caids}|{channelName}|||{provider}\n".format(sid=data.ServiceID, caids=caidsStr, channelName=data.Name, provider=provider).encode("utf-8"))
-                else:
-                    print(f"Provider not found: {data.Platform}")
+                #provider, caids = findCaid(data.Platform)
+                #if caids:
+                #    caidsStr = ','.join(caids)
+                #    srvFile.write("{sid:04X}:{caids}|{channelName}|||{provider}\n".format(sid=data.ServiceID, caids=caidsStr, channelName=data.Name, provider=provider).encode("utf-8"))
+                #else:
+                #    print(f"Provider not found: {data.Platform}")
