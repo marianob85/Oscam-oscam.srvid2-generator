@@ -5,7 +5,7 @@ import ssl
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
-url = "https://pl.kingofsat.net/pos-{}E.php"
+url = "https://pl.kingofsat.net/pos-{}E"
 
 
 def extract_audio_pids(line):
